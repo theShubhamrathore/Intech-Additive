@@ -1,0 +1,6 @@
+Greedy programming is the approach that tries to solve a problem as quickly as possible, 
+while dynamic programming is the approach that tries to solve a problem as efficiently as possible. 
+In greedy programming, 
+you try to solve a problem as quickly as possible by trying to find the smallest possible solution.
+The Idea to Solve this Problem is by using the Bottom Up Memoization.
+Here is the Bottom up approach to solve this Problem.
