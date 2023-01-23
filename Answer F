@@ -1,0 +1,38 @@
+Scalar Product/Dot Product of Vectors 
+The dot product of vectors is also called the scalar product of vectors. The resultant of the dot product of the vectors is a scalar value. Dot Product of vectors is equal to the product of the magnitudes of the two vectors, and the cosine of the angle between the two vectors. The resultant of the dot product of two vectors lie in the same plane of the two vectors. The dot product may be a positive real number or a negative real number..
+
+                                        Scalar product = |a||b| cos α 
+
+Cross Product/Vector Product of Vectors
+Cross Product is also called a Vector Product. Cross product is a form of vector multiplication, performed between two vectors of different nature or kinds. When two vectors are multiplied with each other and the product is also a vector quantity, then the resultant vector is called the cross product of two vectors or the vector product. The resultant vector is perpendicular to the plane containing the two given vectors.
+
+                                                        A × B =|A| |B| sin θ
+
+
+                                                              BOUNS:( f )
+
+A plane is defined by the equation: Ax + By + Cz + D = 0, or the vector [A B C D]. A, B, and C, define the normal to the plane. If A2 + B2 + C2 = 1 then the unit normal Pn = [A B C]. If A, B, and C define a unit normal, then the distance from the origin [0 0 0] to the plane is D.A ray is defined by: R0 = [X0, Y0, Z0]
+Rd = [Xd, Yd, Zd]
+so R(t) = R0 + t * Rd , t > 0 To determine if there is an intersection with the plane, substitute for R(t) into the plane equation and get:   A(X0 + Xd * t) + B(Y0 + Yd * t) + (Z0 + Zd * t) + D = 0
+which yields:
+t = -(AX0 + BY0 + CZ0 + D) / (AXd + BYd + CZd)
+= -(Pn· R0 + D) / (Pn · Rd)
+First compute Pn· Rd = Vd. If Vd = 0 (incident angle, q = 900) then the ray is parallel to the plane and there is no intersection (if ray in in the plane then we ignore it). If Vd > 0 then the normal of the plane is pointing away from the ray. If we use one-sided planar objects then could stop if Vd > 0, else continue.Now compute second dot product V0 = -(Pn· R0 + D) and compute t = V0 / Vd . If t < 0 then the ray intersects plane behind origin, i.e. no intersection of interest, else compute intersection point:
+Pi = [Xi Yi Zi] = [X0 + Xd * t Y0 + Yd * t Z0 + Zd * t]
+Now we usually want surface normal for the surface facing the ray, so if Vd > 0 (normal facing away) then reverse sign of ray.
+So algorithm analysis:
+1. Compute Vd and compare to 0: 3 "*"s, 2 "+"s, 1 comparison.
+2. Compute V0 and t and compare to 0: 3 or 4 "*"s, 3 "+"s, 1 comparison.
+3. Compute intersection joint: 3 "*"s, 3 "+"s.
+4. Compare Vprd to 0 and reverse normal: 1 comparison.
+Total = 10 "*"s, 8 "+"s, 3 comparisons.
+Example calculation:
+Given a plane [1 0 0 -7] ( plane with x = -7)
+Ray with R0 = [ 2 3 4 ], Rd = [ 0.577 0.577 0.577]
+Compute Vd = Pn · Rd = 0.577 > 0 , therefore the plane points away from the ray
+Next, compute V0 = -(Pn · R0 + D) = 5
+t = 5/0.577 = 8.66 > 0 , therefore the intersection point is not behind the ray, so compute the coordinates of the intersection point:
+Xi = 2 + 0.577 * 8.66 = 7
+Yi = 3 + 0.577 * 8.66 = 8 Ri = [ 7 8 9 ]
+Zi = 4 + 0.577 * 8.66 = 9
+Must reverse normal so it is N = [-1 0 0]
