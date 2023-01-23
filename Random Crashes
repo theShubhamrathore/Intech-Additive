@@ -1,0 +1,28 @@
+/*
+So the program crashes at diffrent places everytime
+This could be due to variable showing undefined behaviour due to using illegal methods
+There may be memory leak or heap overflow due to data structure running out of its max limit
+Or some other process or the application  on which the program depends may be causing the problem
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int number, guess, nguesses = 0;
+    srand(time(0));
+    number = rand() % 100 + 1;
+    cout << "Guess the number between 1 and 100" << endl;
+    do
+    {
+        cin >> guess;
+        if (guess > number)
+            cout << "Lower number please" << endl;
+        else if (number > guess)
+            cout << "Higher number please" << endl;
+        else
+            cout << "you guesses in " << nguesses << " attempts" << endl;
+        nguesses++;
+    } while (guess != number);
+    return 0;
+}
